@@ -26,6 +26,22 @@ html, body {
 body {
     background: #e4e4e1; 
     margin: 0;
+    font-family: helvetica;
+}
+h1, h2, h3 {
+    font-family: 'Helvetica', cursive;
+    font-weight: 400;
+    margin: 0;
+}
+h1 {
+    font-size: 4rem;
+    line-height: 0.85;
+}
+h2 {
+    font-size: 2.5rem;
+}
+h3 {
+    font-size: 2.4rem;
 }
 
 /* links */
@@ -43,9 +59,16 @@ footer a:hover {
     color: #3c8453;
 }
 .btn {
-    background: #3c8453;
+    background: #828e86;
     color: #f6f6f6;
     text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    display: inline-block;
+    padding: 7px;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    border-radius: 4px;
 }
 
 .content-wrapper {
@@ -91,6 +114,22 @@ footer a:hover {
     position: fixed;
     top: 5px;
     left: 5px;
+}
+@media screen and (max-width: 1200px){
+    .download-link {
+        position: absolute;
+    }
+}
+@media screen and (max-width: 500px){
+    .resume header::before {
+        height: 200px;
+    }
+    h1 {
+        font-size: 5rem;
+    }
+    h2 {
+        font-size: 2.6rem;
+    }
 }
 
 

@@ -1,0 +1,128 @@
+/*
+CSS RESETS:
+ Border box reset:
+https://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ 62.5% Fix: https: //www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/
+*/
+
+
+html {
+   box-sizing: border-box;
+   font-size: 62.5%;
+}
+
+
+*,
+*:before,
+*:after {
+   box-sizing: inherit;
+   margin: 0;
+   padding: 0;
+}
+
+
+html,
+body {
+   height: 100%;
+   margin: 0;
+   font-size: 1.2rem;
+   line-height: 1.2;
+}
+
+
+body {
+    font-size: 1.6rem;
+   /* font-size 1.6rem is now the same as 16px */
+   line-height: 1.6;
+   margin: auto;
+   width: 900px;
+   height:100%;
+   background: linear-gradient(0deg,
+   
+   rgb(136, 136, 136, 1) 0%,
+   rgba(39, 39, 39, 1) 28%,
+    rgba(24, 24, 24, 1) 49%,
+    rgb(136, 136, 136, 1) 100%);
+}
+@keyframes stretching {
+   0% {
+     width: 100px;
+   }
+   100% {
+     width: 500px;
+   }
+ }
+@keyframes bgcolor {
+   0% {
+     background-position: 0% 50%;
+  }
+  50% {
+     background-position: 100% 50%;
+  }
+  100% {
+     background-position: 0% 50%;
+  }
+}
+
+
+ header {
+    padding: 50px;
+    background: rgb(232, 233, 234);
+    text-align: center;
+ }
+
+ h1, h2, h3 {
+   font-family: 'Cambria', cursive;
+   font-weight: 400;
+   margin: 0;
+   
+}
+h1 {
+   font-size: 5rem;
+   line-height: 0.85;
+}
+h2 {
+   font-size: 2rem;
+}
+
+ /* Image hover larger size */
+ ul {
+   display: flex;
+ }
+
+ li {
+   list-style-type: none;
+   padding: 10px;
+   position: relative;
+ }
+ .large {
+  position: absolute;
+  left: -9999px;
+}
+li:hover .large {
+   left: 20px;
+   top: -150px;
+ }
+ .large-image {
+   border-radius: 4px;
+    box-shadow: 1px 1px 3px 3px rgba(127, 127, 127, 0.15);;
+ }
+ * {
+   box-sizing: border-box;
+ }
+ 
+ /*columns */
+ .row {
+   display: flex;
+ }
+ 
+ .column {
+   flex: 50%;
+   padding: 10px;
+ }
+
+ .start {
+   background-size: cover;
+   display: flex;
+   flex-direction: column;
+ }
