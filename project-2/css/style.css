@@ -84,6 +84,14 @@ h1 {
 h2 {
    font-size: 2rem;
 }
+p {
+   font-size: 1rem;
+}h2.hover {
+   color:black;
+}
+h2.hover:before {
+   content: attr(data-hover);
+}
 
  /* Image hover larger size */
  ul {
@@ -111,6 +119,32 @@ li:hover .large {
    box-sizing: border-box;
  }
  
+ /* Image hover larger downsize */
+ ul {
+   display: flex;
+ }
+
+ li {
+   list-style-type: none;
+   padding: 10px;
+   position: relative;
+ }
+ .dlarge {
+  position: absolute;
+  left: -9999px;
+}
+li:hover .dlarge {
+   left: 20px;
+   bottom: -150px;
+ }
+ .dlarge-image {
+   border-radius: 4px;
+    box-shadow: 1px 1px 3px 3px rgba(127, 127, 127, 0.15);;
+ }
+ * {
+   box-sizing: border-box;
+ }
+
  /*columns */
  .row {
    display: flex;
