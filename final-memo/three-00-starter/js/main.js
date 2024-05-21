@@ -124,32 +124,40 @@ function changeCameraAngle(angle) {
 // Event listeners for button clicks
 document.getElementById('default').addEventListener('click', function() {
     changeCameraAngle('default');
+    showPopup("This is just a place to chill out in.");
 });
 document.getElementById('chest').addEventListener('click', function() {
     changeCameraAngle('chest');
+    showPopup("A treasure chest full of old sentiments.");
 });
 
 document.getElementById('bear').addEventListener('click', function() {
     changeCameraAngle('bear');
+    showPopup("A little companion which aided you during those restless nights. It's still on guard.");
 });
 document.getElementById('plant').addEventListener('click', function() {
     changeCameraAngle('plant');
+    showPopup("Bits of green, a gift to remind you of the eventual peace in the future.");
 });
 
 document.getElementById('mp3').addEventListener('click', () => {
     changeCameraAngle('mp3');
     toggleAudio();
+    showPopup("Back before everything is now on phones, a well used and respected device, thank you.");
 });
 
 document.getElementById('lamp').addEventListener('click', function() {
     changeCameraAngle('lamp');
+    showPopup("For those late night studying, the lamp's light which allowed those stressful nights.");
 });
 
 document.getElementById('books').addEventListener('click', function() {
     changeCameraAngle('books');
+    showPopup("A vast collection of knowledge, some contain information, mix of emotions, - records that stands against time.");
 });
 document.getElementById('pics').addEventListener('click', function() {
     changeCameraAngle('pics');
+    showPopup("Proof of your beginnings, momentos of the past, how do you do now?");
 });
 
 function toggleAudio() {
@@ -159,6 +167,18 @@ function toggleAudio() {
         audio.play();
     }
 }
+
+function showPopup(message) {
+    const popup = document.createElement('div');
+    popup.className = 'popup';
+    popup.innerText = message;
+    document.body.appendChild(popup);
+    
+    setTimeout(() => {
+        popup.remove();
+    }, 5000);
+}
+
 
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
