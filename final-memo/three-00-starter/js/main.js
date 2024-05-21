@@ -1,6 +1,6 @@
 // Basic Three.JS scene from documentation, importing Three.JS through a CDN 
 // https://threejs.org/docs/#manual/en/introduction/Creating-a-scene
-let scene, camera, renderer, cone, room, baked, controls, cameraTarget, cameraLerpAlpha;
+let scene, camera, renderer, cone, room, baked, controls, audio, isPlaying = false;
 
 
 //~~~~~~~Import Three.js (also linked to as import map in HTML)~~~~~~
@@ -59,6 +59,16 @@ loader.load('models/memo-room.glb', function (gltf){
     scene.add(room);
 })
 
+// Audio setup
+const listener = new THREE.AudioListener();
+camera.add(listener);
+audio = new THREE.Audio(listener);
+const audioLoader = new THREE.AudioLoader();
+audioLoader.load('sounds/sappheiros-passion.mp3', function(buffer) {
+    audio.setBuffer(buffer);
+    audio.setLoop(false);
+    audio.setVolume(0.5);
+});
 
 
 
@@ -90,11 +100,11 @@ function changeCameraAngle(angle) {
             camera.rotation.set(-151.61 * (Math.PI / 180), 24.07 * (Math.PI / 180), 167.57 * (Math.PI / 180));
             break;
          case 'plant':
-            camera.position.set(4.349, 15.470, -19.761);
+            camera.position.set(-2.67, 20, -40);
             camera.rotation.set(-35.53 * (Math.PI / 180), 47.50 * (Math.PI / 180), 18.08 * (Math.PI / 180));
             break;
         case 'mp3':
-            camera.position.set(8.269, 14, -20);
+            camera.position.set(12, 25, -45);
             camera.rotation.set(-68.73 * (Math.PI / 180), 24.10 * (Math.PI / 180), 35.68 * (Math.PI / 180));
             break;
         case 'lamp':
@@ -102,16 +112,53 @@ function changeCameraAngle(angle) {
             camera.rotation.set(18 * (Math.PI / 180), -19.61 * (Math.PI / 180), -12.07 * (Math.PI / 180));
             break;
         case 'books':
-            camera.position.set(-19, 9, 0.805);
+            camera.position.set(-19, 17, -20);
             camera.rotation.set(0, 7 * (Math.PI / 180), 0);
             break;
         case 'pics':
-            camera.position.set(-2.67, 12.323, -19.123);
+            camera.position.set(-2.67, 20, -40);
             camera.rotation.set(0, 0, 0);
             break;
     }
 }
+// Event listeners for button clicks
+document.getElementById('default').addEventListener('click', function() {
+    changeCameraAngle('default');
+});
+document.getElementById('chest').addEventListener('click', function() {
+    changeCameraAngle('chest');
+});
 
+document.getElementById('bear').addEventListener('click', function() {
+    changeCameraAngle('bear');
+});
+document.getElementById('plant').addEventListener('click', function() {
+    changeCameraAngle('plant');
+});
+
+document.getElementById('mp3').addEventListener('click', () => {
+    changeCameraAngle('mp3');
+    toggleAudio();
+});
+
+document.getElementById('lamp').addEventListener('click', function() {
+    changeCameraAngle('lamp');
+});
+
+document.getElementById('books').addEventListener('click', function() {
+    changeCameraAngle('books');
+});
+document.getElementById('pics').addEventListener('click', function() {
+    changeCameraAngle('pics');
+});
+
+function toggleAudio() {
+    if (audio.isPlaying) {
+        audio.stop();
+    } else {
+        audio.play();
+    }
+}
 
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
